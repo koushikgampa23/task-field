@@ -1,0 +1,37 @@
+.inputStyle {
+  width: 100%;
+  min-width: 200px;
+  height: 56px;
+  padding-inline-start: 8px;
+}
+
+.inputStyleHalf {
+  width: 90%;
+  height: 56px;
+  padding-inline-start: 8px;
+}
+
+.spaceBetween {
+  margin-right: 6px;
+}
+
+.remarks {
+  width: 100%;
+}
+
+.subContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerStyle {
+  padding: 20px;
+}
+
+.columnStyle {
+  padding: 5px;
+}
+
+.columnStyle {
+  margin-bottom: 15px;
+}

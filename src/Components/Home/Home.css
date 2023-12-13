@@ -1,0 +1,15 @@
+/* .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+} */
+
+.dropDownStyle {
+  /* display: flex; */
+  width: 200px;
+  height: 40px;
+}
+
+.subContainer {
+  display: flex;
+}
