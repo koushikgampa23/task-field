@@ -1,53 +1,52 @@
+import * as React from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useField } from "react-final-form";
-import { ErrorMessage } from "./ErrorMessage";
-import "./CustomDropDown.css";
 
 interface Props {
   title: string;
   fields: string[];
-  fieldName: string;
+  fieldState: string | null | undefined;
+  setFieldState: React.Dispatch<
+    React.SetStateAction<string | null | undefined>
+  >;
   disabled?: boolean;
 }
 
-export const CustomDropDown = ({
+export const CustomDropDown1 = ({
   fields,
-  fieldName,
+  fieldState,
+  setFieldState,
   title,
   disabled,
 }: Props) => {
-  const {
-    input: { value, onChange: handleChange, onBlur },
-    meta,
-  } = useField(fieldName);
-
   return (
-    <Box sx={{ minWidth: 120 }} onClick={() => onBlur()}>
+    <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{title}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={value && !disabled ? value.selected : "Not Applicable"}
-          label={title}
+          value={fieldState ? fieldState : ""}
+          label="Age"
           onChange={(e) => {
-            handleChange({ ...value, selected: e.target.value });
+            setFieldState(e.target.value as string);
           }}
+          className="selectStyle"
           sx={{ border: "1px solid grey" }}
           disabled={disabled}
         >
-          {fields.map((field: string, key) => (
-            <MenuItem value={field} key={key}>
-              {field}
-            </MenuItem>
-          ))}
+          {fields.map((field: string, key) => {
+            return (
+              <MenuItem value={field} key={key}>
+                {field}
+              </MenuItem>
+            );
+          })}
         </Select>
       </FormControl>
-      {meta.touched && meta.error && <ErrorMessage>{meta.error}</ErrorMessage>}
     </Box>
   );
 };

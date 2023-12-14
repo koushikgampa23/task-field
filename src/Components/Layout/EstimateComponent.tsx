@@ -1,51 +1,49 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useField } from "react-final-form";
 
 interface Props {
-  estimateDate: string;
-  setEstimateDate: React.Dispatch<React.SetStateAction<string>>;
+  field: string;
   className?: string;
-  setDateError: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const EstimateComponent = ({
-  estimateDate,
-  setEstimateDate,
-  className,
-  setDateError,
-}: Props) => {
-  const formatDate = (date: any) => {
-    const day = String(date.getDate());
-    const month = String(date.getMonth() + 1);
+const EstimateComponent = ({ field, className }: Props) => {
+  const formatDate = (date: Date) => {
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
   };
 
-  useEffect(() => {
-    setEstimateDate(formatDate(new Date()));
-  }, [setEstimateDate]);
-
-  const handleEstimateDateChange = (event: any) => {
-    const selectedDate = new Date(event.target.value);
-    const currentDate = new Date();
-
-    const formattedSelectedDate = formatDate(selectedDate);
-
-    if (
-      formattedSelectedDate >= formatDate(currentDate) ||
-      formattedSelectedDate === estimateDate
-    ) {
-      setEstimateDate(formattedSelectedDate);
-      setDateError("");
+  const dateValidator = (val: any) => {
+    if (!val) {
+      return "Required Field";
     } else {
-      setDateError("Invalid Date(>=CurrentDate)");
+      const currentDate = new Date();
+      if (val < formatDate(currentDate)) {
+        return "Invalid Date (>= Current Date)";
+      }
     }
+  };
+
+  const {
+    input: { value, onChange },
+  } = useField(field, {
+    initialValue: formatDate(new Date()),
+    validate: dateValidator,
+  });
+
+  const handleEstimateDateChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const selectedDate = new Date(event.target.value);
+    onChange(formatDate(selectedDate));
   };
 
   return (
     <div>
       <input
         type="date"
-        value={estimateDate}
+        value={value}
         onChange={handleEstimateDateChange}
         className={className}
       />

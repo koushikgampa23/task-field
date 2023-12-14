@@ -7,7 +7,7 @@ import { IoIosWarning } from "react-icons/io";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const Header = ({ data, toggle }: any) => {
+export const Header = ({ data, toggle, onSubmit }: any) => {
   const taskData = collection(db, "taskData");
   const handleSubmit = async () => {
     try {

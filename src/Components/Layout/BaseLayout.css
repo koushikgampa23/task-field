@@ -1,0 +1,59 @@
+.inputStyle {
+  width: 100%;
+  min-width: 200px;
+  height: 56px;
+  padding-inline-start: 8px;
+}
+
+.inputStyleHalf {
+  width: 90%;
+  height: 56px;
+  padding-inline-start: 8px;
+}
+
+.spaceBetween {
+  margin-right: 6px;
+}
+
+.remarks {
+  width: 100%;
+}
+
+.subContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.containerStyle {
+  padding: 20px;
+}
+
+.background {
+  background-color: #056364;
+  color: white;
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.custom-col {
+  margin-bottom: 23px;
+}
+
+.rowStyle {
+  margin-bottom: 25px;
+}
+
+.errorStyle {
+  margin-bottom: 8px;
+}

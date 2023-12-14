@@ -1,11 +1,11 @@
 import { Col, Container, Row } from "react-bootstrap";
 import "./Layout.css";
 import { useEffect, useState } from "react";
-import { CustomDropDown } from "./CustomDropDown";
-import { ErrorMessage } from "./ErrorMessage";
-import { Header } from "../Header/Header";
-import EstimateComponent from "./EstimateComponent";
+import { CustomDropDown1 } from "./CustomDropDown1";
+import { ErrorMessage } from "../ErrorMessage";
+import { Header } from "../../Header/Header";
 import Switch from "@mui/material/Switch";
+import EstimateComponent1 from "./EstimateComponent1";
 
 export const Layout = () => {
   const layoutSizes = {
@@ -77,7 +77,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={yard ? "columnStyle" : ""}
           >
-            <CustomDropDown
+            <CustomDropDown1
               title={"Yard*"}
               fields={["HK", "AU", "OT"]}
               fieldState={yard}
@@ -91,7 +91,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={name ? "columnStyle" : ""}
           >
-            <CustomDropDown
+            <CustomDropDown1
               title={"Customer Name*"}
               fields={["JACK", "SAMSON", "JOHN"]}
               fieldState={name}
@@ -184,7 +184,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={dateError ? "" : "columnStyle"}
           >
-            <EstimateComponent
+            <EstimateComponent1
               estimateDate={estimateDate}
               setEstimateDate={setEstimateDate}
               className="inputStyle"
@@ -198,7 +198,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={!estimateType ? "" : "columnStyle"}
           >
-            <CustomDropDown
+            <CustomDropDown1
               title="Estimate Type*"
               fields={["Type 1", "Type 2", "Type 3"]}
               fieldState={estimateType}
@@ -212,7 +212,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={!damageType ? "" : "columnStyle"}
           >
-            <CustomDropDown
+            <CustomDropDown1
               title="Damage Type*"
               fields={["Internal", "External"]}
               fieldState={damageType}
@@ -245,7 +245,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={!bill ? "" : "columnStyle"}
           >
-            <CustomDropDown
+            <CustomDropDown1
               title="Bill To*"
               fields={["JACK", "SAMSON", "JOHN"]}
               fieldState={bill}
@@ -259,7 +259,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={!lesse ? "" : "columnStyle"}
           >
-            <CustomDropDown
+            <CustomDropDown1
               title={"Lessee*"}
               fields={["MAERSK", "CMACGM", "MSI"]}
               fieldState={lesse}
@@ -273,7 +273,7 @@ export const Layout = () => {
             lg={layoutSizes.lg}
             className={!agent ? "" : "columnStyle"}
           >
-            <CustomDropDown
+            <CustomDropDown1
               title="Agent*"
               fields={["Agent 1", "Agent 2", "Agent 3", "Not Applicable"]}
               fieldState={agent}
@@ -313,7 +313,7 @@ export const Layout = () => {
               className={!paymentType ? "" : "columnStyle"}
             >
               <>
-                <CustomDropDown
+                <CustomDropDown1
                   title="Payment Type*"
                   fields={["Cash", "Online"]}
                   fieldState={paymentType}
