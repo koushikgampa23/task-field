@@ -100,7 +100,7 @@ export const BaseLayout = () => {
         errors.amount = "*Decimal and Character < 10 allowed";
       }
     }
-    if (!values.paymentType && values.amount) {
+    if (!values.paymentType.selected) {
       errors.paymentType = "*Required Field";
     }
     if (!values.remarks) {
@@ -479,27 +479,30 @@ export const BaseLayout = () => {
                   )}
                 </Field>
                 {form.getState().values.amount && (
-                  <Col
-                    sm={layoutSizes.sm}
-                    md={layoutSizes.md}
-                    lg={layoutSizes.lg}
-                  >
-                    <Field name="paymentType">
-                      {() => (
-                        <CustomDropDown
-                          fields={initalValues.paymentType.fields}
-                          title={initalValues.paymentType.title}
-                          fieldName={"paymentType"}
-                        />
-                      )}
-                    </Field>
-                  </Col>
+                  <Field name="paymentType">
+                    {({ meta }) => (
+                      <Col
+                        sm={layoutSizes.sm}
+                        md={layoutSizes.md}
+                        lg={layoutSizes.lg}
+                        className={"errorStyle"}
+                      >
+                        <>
+                          <CustomDropDown
+                            fields={initalValues.paymentType.fields}
+                            title={initalValues.paymentType.title}
+                            fieldName={"paymentType"}
+                          />
+                        </>
+                      </Col>
+                    )}
+                  </Field>
                 )}
                 <Col
                   sm={layoutSizes.sm}
                   md={layoutSizes.md}
                   lg={layoutSizes.lg}
-                  className="rowStyle"
+                  className="errorStyle"
                 >
                   <Field name="active">
                     {({ input }) => (
